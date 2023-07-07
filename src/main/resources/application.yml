@@ -1,0 +1,25 @@
+server:
+  port: 1111
+spring:
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/webflux_essentials_db
+    username: postgres
+    password: root123
+  liquibase:
+    change-log: classpath:db/changelog/master.xml
+    url: jdbc:postgresql://localhost:5432/webflux_essentials_db
+    password: root123
+    user: postgres
+
+springbootwebfluxjjwt:
+  password:
+    encoder:
+      secret: mysecret
+      iteration: 33
+      keylength: 256
+  jjwt:
+    secret: ThisIsSecretForJWTHS512SignatureAlgorithmThatMUSTHave64ByteLength
+    expiration: 28800
+
+
+
