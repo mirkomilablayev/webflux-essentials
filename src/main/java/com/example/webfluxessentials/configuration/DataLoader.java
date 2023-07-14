@@ -5,6 +5,7 @@ package com.example.webfluxessentials.configuration;
 import com.example.webfluxessentials.domain.User;
 import com.example.webfluxessentials.repository.UserRepository;
 import com.example.webfluxessentials.util.Role;
+import com.example.webfluxessentials.util.UserStatus;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -39,6 +40,7 @@ private static final String ADMIN_USERNAME = "administrator";
                       user.setFullName("administrator");
                       user.setUsername(ADMIN_USERNAME);
                       user.setPassword(passwordEncoder.encode("admin_00999"));
+                      user.setStatus(UserStatus.ACTIVE);
                       user.setRoles(new ArrayList<>(List.of(Role.ROLE_ADMIN)));
                       return userRepository.save(user);
                   }

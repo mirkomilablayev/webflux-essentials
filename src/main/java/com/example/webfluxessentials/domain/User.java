@@ -25,8 +25,8 @@ public class User implements UserDetails {
     private Long id;
     @Column("fullname")
     private String fullName;
-    @Column("phone")
-    private String phone;
+    @Column("username")
+    private String username;
     @Column("password")
     private String password;
 
@@ -48,7 +48,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return this.phone;
+        return this.username;
     }
 
     @Override

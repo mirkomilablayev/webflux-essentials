@@ -44,13 +44,13 @@ public class AuthenticationResource {
 
     @PostMapping("/register")
     public Mono<?> register(@RequestBody RegisterRequest registerRequest) {
-        return userRepository.existsByUsername(registerRequest.getPhoneNumber())
+        return userRepository.existsByUsername(registerRequest.getUsername())
                 .flatMap(isExists -> {
                     if (isExists) {
                         return Mono.error(new GenericException(Errors.USERNAME_ALREADY_TAKEN));
                     } else {
                         User user = new User();
-                        user.setPhone(registerRequest.getPhoneNumber());
+                        user.setUsername(registerRequest.getUsername());
                         user.setStatus(UserStatus.ACTIVE);
                         user.setPassword(customPasswordEncoder.encode(registerRequest.getPassword()));
                         user.setFullName(registerRequest.getFullName());
